@@ -24,5 +24,6 @@ pnpm-debug.log*
 .idea/
 .vscode/
 
-# Move build artifacts
+# Sui Move
 move/counter/build
+package_summaries/
