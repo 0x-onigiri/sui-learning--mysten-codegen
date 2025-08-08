@@ -107,5 +107,5 @@ function getCounterFields(data: SuiObjectData) {
     throw new Error('Expected a move object')
   }
 
-  return counter.Counter().fromBase64(data.bcs.bcsBytes)
+  return counter.Counter.fromBase64(data.bcs.bcsBytes)
 }

@@ -11,17 +11,16 @@
  * - the owner of the counter can reset it to any value
  */
 
+import { MoveStruct, normalizeMoveArguments, type RawTransactionArgument } from '../utils/index.js';
 import { bcs } from '@mysten/sui/bcs';
 import { type Transaction } from '@mysten/sui/transactions';
-import { normalizeMoveArguments, type RawTransactionArgument } from '../utils/index.js';
 import * as object from './deps/sui/object.js';
-export function Counter() {
-    return bcs.struct('Counter', {
-        id: object.UID(),
+const $moduleName = '@local-pkg/counter::counter';
+export const Counter = new MoveStruct({ name: `${$moduleName}::Counter`, fields: {
+        id: object.UID,
         owner: bcs.Address,
         value: bcs.u64()
-    });
-}
+    } });
 export interface CreateOptions {
     package?: string;
     arguments?: [

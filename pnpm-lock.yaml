@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@mysten/codegen':
-        specifier: ^0.2.2
-        version: 0.2.2
+        specifier: ^0.4.0
+        version: 0.4.0
       '@mysten/dapp-kit':
         specifier: 0.16.15
         version: 0.16.15(@tanstack/react-query@5.83.0(react@18.3.1))(@types/react-dom@18.3.7(@types/react@18.3.23))(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
       '@mysten/sui':
-        specifier: 1.36.0
-        version: 1.36.0(typescript@5.8.3)
+        specifier: ^1.37.1
+        version: 1.37.1(typescript@5.8.3)
       '@radix-ui/colors':
         specifier: ^3.0.0
         version: 3.0.0
@@ -327,6 +327,20 @@ packages:
       '@gql.tada/vue-support':
         optional: true
 
+  '@gql.tada/cli-utils@1.7.1':
+    resolution: {integrity: sha512-wg5ysZNQxtNQm67T3laVWmZzLpGb7QfyYWZdaUD2r1OjDj5Bgftq7eQlplmH+hsdffjuUyhJw/b5XAjeE2mJtg==}
+    peerDependencies:
+      '@0no-co/graphqlsp': ^1.12.13
+      '@gql.tada/svelte-support': 1.0.1
+      '@gql.tada/vue-support': 1.0.1
+      graphql: ^15.5.0 || ^16.0.0 || ^17.0.0
+      typescript: ^5.0.0
+    peerDependenciesMeta:
+      '@gql.tada/svelte-support':
+        optional: true
+      '@gql.tada/vue-support':
+        optional: true
+
   '@gql.tada/internal@1.0.8':
     resolution: {integrity: sha512-XYdxJhtHC5WtZfdDqtKjcQ4d7R1s0d1rnlSs3OcBEUbYiPoJJfZU7tWsVXuv047Z6msvmr4ompJ7eLSK5Km57g==}
     peerDependencies:
@@ -361,8 +375,11 @@ packages:
   '@mysten/bcs@1.6.4':
     resolution: {integrity: sha512-HBBrqMtnVp5vy12efJYhj/HnOYGu+x5SqRQpnOJEHEkxypGZ01WNFoCNw7USzDSyJvPauhqdzUXzR+lYM1D5/g==}
 
-  '@mysten/codegen@0.2.2':
-    resolution: {integrity: sha512-mKjhpF+PJPV/LqPjnL+5GBmyYUlBXz4B0bYB+48W9dI0R/68jjQqTwPAKvYo6kv3KWtob5c49JNozlU0UfL6ug==}
+  '@mysten/bcs@1.7.0':
+    resolution: {integrity: sha512-8zE2Jzj2ai55RlVXx2pEMbbq+X3vB+uPGBvZr0F79IdTwuwcu4QdFG3PT/zHsytsvATkn+z0f2YDWhM5916u2A==}
+
+  '@mysten/codegen@0.4.0':
+    resolution: {integrity: sha512-CHT71qBqkpuTaZgHe7iRhG7D0MMoLvCLHmZxlB4P0k7haKPY61b+ljPmR8bg1Ny0bkHJukkEqfVMJYs/Vpisdg==}
     hasBin: true
 
   '@mysten/dapp-kit@0.16.15':
@@ -378,6 +395,10 @@ packages:
     resolution: {integrity: sha512-BHJatlqZir4pD1SRBjxh+SGg0BOTX1y9OxgX66e8rhEqZj33TztwpsSG2s+luLD+ugXDBAWt18/1Bk4/D1SwSg==}
     engines: {node: '>=18'}
 
+  '@mysten/sui@1.37.1':
+    resolution: {integrity: sha512-xkQEgO/XdGz9T5vJU0iEiw8ZnuDSHWjdYA+u783wY5dt0TknYDBBcThaufhz9j+tksCxKhR5OkktE+Wz3zdYtw==}
+    engines: {node: '>=18'}
+
   '@mysten/utils@0.1.1':
     resolution: {integrity: sha512-jvhJC6/2la1QHltukQXzfyTZ+VVHxe187JjPx+mEXRUWyAo6jCSdioOQJIfaGu4K4i+37KeiydXRwV/bq/7UJQ==}
 
@@ -389,6 +410,10 @@ packages:
 
   '@noble/curves@1.9.3':
     resolution: {integrity: sha512-NiHFh8qtZRREtY0Bpup+xpmLnB0bn9UAtj8CARBc2x1zjpVLDC84u+Bvy2+uaSgA3AmMP9zsacMZT1echgVAdQ==}
+    engines: {node: ^14.21.3 || >=16}
+
+  '@noble/curves@1.9.6':
+    resolution: {integrity: sha512-GIKz/j99FRthB8icyJQA51E8Uk5hXmdyThjgQXRKiv9h0zeRlzSCLIzFw6K1LotZ3XuB7yzlf76qk7uBmTdFqA==}
     engines: {node: ^14.21.3 || >=16}
 
   '@noble/hashes@1.8.0':
@@ -1707,6 +1732,12 @@ packages:
     peerDependencies:
       typescript: ^5.0.0
 
+  gql.tada@1.8.13:
+    resolution: {integrity: sha512-fYoorairdPgxtE7Sf1X9/6bSN9Kt2+PN8KLg3hcF8972qFnawwUgs1OLVU8efZMHwL7EBHhhKBhrsGPlOs2lZQ==}
+    hasBin: true
+    peerDependencies:
+      typescript: ^5.0.0
+
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
 
@@ -2301,6 +2332,13 @@ snapshots:
       graphql: 16.11.0
       typescript: 5.8.3
 
+  '@gql.tada/cli-utils@1.7.1(@0no-co/graphqlsp@1.14.0(graphql@16.11.0)(typescript@5.8.3))(graphql@16.11.0)(typescript@5.8.3)':
+    dependencies:
+      '@0no-co/graphqlsp': 1.14.0(graphql@16.11.0)(typescript@5.8.3)
+      '@gql.tada/internal': 1.0.8(graphql@16.11.0)(typescript@5.8.3)
+      graphql: 16.11.0
+      typescript: 5.8.3
+
   '@gql.tada/internal@1.0.8(graphql@16.11.0)(typescript@5.8.3)':
     dependencies:
       '@0no-co/graphql.web': 1.1.2(graphql@16.11.0)
@@ -2329,10 +2367,15 @@ snapshots:
       '@mysten/utils': 0.1.1
       '@scure/base': 1.2.6
 
-  '@mysten/codegen@0.2.2':
+  '@mysten/bcs@1.7.0':
     dependencies:
-      '@mysten/bcs': 1.6.4
-      '@mysten/sui': 1.36.0(typescript@5.8.3)
+      '@mysten/utils': 0.1.1
+      '@scure/base': 1.2.6
+
+  '@mysten/codegen@0.4.0':
+    dependencies:
+      '@mysten/bcs': 1.7.0
+      '@mysten/sui': 1.37.1(typescript@5.8.3)
       '@stricli/auto-complete': 1.2.0
       '@stricli/core': 1.2.0
       '@types/node': 22.16.4
@@ -2403,6 +2446,25 @@ snapshots:
       - '@gql.tada/vue-support'
       - typescript
 
+  '@mysten/sui@1.37.1(typescript@5.8.3)':
+    dependencies:
+      '@graphql-typed-document-node/core': 3.2.0(graphql@16.11.0)
+      '@mysten/bcs': 1.7.0
+      '@mysten/utils': 0.1.1
+      '@noble/curves': 1.9.6
+      '@noble/hashes': 1.8.0
+      '@scure/base': 1.2.6
+      '@scure/bip32': 1.7.0
+      '@scure/bip39': 1.6.0
+      gql.tada: 1.8.13(graphql@16.11.0)(typescript@5.8.3)
+      graphql: 16.11.0
+      poseidon-lite: 0.2.1
+      valibot: 0.36.0
+    transitivePeerDependencies:
+      - '@gql.tada/svelte-support'
+      - '@gql.tada/vue-support'
+      - typescript
+
   '@mysten/utils@0.1.1':
     dependencies:
       '@scure/base': 1.2.6
@@ -2423,6 +2485,10 @@ snapshots:
       valibot: 0.36.0
 
   '@noble/curves@1.9.3':
+    dependencies:
+      '@noble/hashes': 1.8.0
+
+  '@noble/curves@1.9.6':
     dependencies:
       '@noble/hashes': 1.8.0
 
@@ -3789,6 +3855,18 @@ snapshots:
       '@0no-co/graphql.web': 1.1.2(graphql@16.11.0)
       '@0no-co/graphqlsp': 1.14.0(graphql@16.11.0)(typescript@5.8.3)
       '@gql.tada/cli-utils': 1.6.3(@0no-co/graphqlsp@1.14.0(graphql@16.11.0)(typescript@5.8.3))(graphql@16.11.0)(typescript@5.8.3)
+      '@gql.tada/internal': 1.0.8(graphql@16.11.0)(typescript@5.8.3)
+      typescript: 5.8.3
+    transitivePeerDependencies:
+      - '@gql.tada/svelte-support'
+      - '@gql.tada/vue-support'
+      - graphql
+
+  gql.tada@1.8.13(graphql@16.11.0)(typescript@5.8.3):
+    dependencies:
+      '@0no-co/graphql.web': 1.1.2(graphql@16.11.0)
+      '@0no-co/graphqlsp': 1.14.0(graphql@16.11.0)(typescript@5.8.3)
+      '@gql.tada/cli-utils': 1.7.1(@0no-co/graphqlsp@1.14.0(graphql@16.11.0)(typescript@5.8.3))(graphql@16.11.0)(typescript@5.8.3)
       '@gql.tada/internal': 1.0.8(graphql@16.11.0)(typescript@5.8.3)
       typescript: 5.8.3
     transitivePeerDependencies:
