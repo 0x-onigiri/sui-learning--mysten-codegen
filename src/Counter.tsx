@@ -7,12 +7,12 @@ import {
 import type { SuiObjectData } from "@mysten/sui/client";
 import { Transaction } from "@mysten/sui/transactions";
 import { Button, Flex, Heading, Text } from "@radix-ui/themes";
-import { useNetworkVariable } from "./networkConfig";
 import { useState } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 
+import * as counter from './contracts/counter/counter';
+
 export function Counter({ id }: { id: string }) {
-  const counterPackageId = useNetworkVariable("counterPackageId");
   const suiClient = useSuiClient();
   const currentAccount = useCurrentAccount();
   const { mutate: signAndExecute } = useSignAndExecuteTransaction();
@@ -21,6 +21,7 @@ export function Counter({ id }: { id: string }) {
     options: {
       showContent: true,
       showOwner: true,
+      showBcs: true,
     },
   });
 
@@ -32,15 +33,18 @@ export function Counter({ id }: { id: string }) {
     const tx = new Transaction();
 
     if (method === "reset") {
-      tx.moveCall({
-        arguments: [tx.object(id), tx.pure.u64(0)],
-        target: `${counterPackageId}::counter::set_value`,
-      });
+      tx.add(counter.setValue({
+        arguments: {
+          counter: id,
+          value: 0,
+        }
+      }));
     } else {
-      tx.moveCall({
-        arguments: [tx.object(id)],
-        target: `${counterPackageId}::counter::increment`,
-      });
+      tx.add(counter.increment({
+        arguments: {
+          counter: id
+        }
+      }))
     }
 
     signAndExecute(
@@ -64,15 +68,16 @@ export function Counter({ id }: { id: string }) {
 
   if (!data.data) return <Text>Not found</Text>;
 
-  const ownedByCurrentAccount =
-    getCounterFields(data.data)?.owner === currentAccount?.address;
+
+  const counterData = getCounterFields(data.data)
+  const ownedByCurrentAccount = counterData?.owner === currentAccount?.address;
 
   return (
     <>
       <Heading size="3">Counter {id}</Heading>
 
       <Flex direction="column" gap="2">
-        <Text>Count: {getCounterFields(data.data)?.value}</Text>
+        <Text>Count: {counterData?.value}</Text>
         <Flex direction="row" gap="2">
           <Button
             onClick={() => executeMoveCall("increment")}
@@ -98,9 +103,9 @@ export function Counter({ id }: { id: string }) {
   );
 }
 function getCounterFields(data: SuiObjectData) {
-  if (data.content?.dataType !== "moveObject") {
-    return null;
+  if (data.bcs?.dataType !== 'moveObject') {
+    throw new Error('Expected a move object')
   }
 
-  return data.content.fields as { value: number; owner: string };
+  return counter.Counter.fromBase64(data.bcs.bcsBytes)
 }

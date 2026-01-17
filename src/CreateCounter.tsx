@@ -1,15 +1,15 @@
 import { Transaction } from "@mysten/sui/transactions";
 import { Button, Container } from "@radix-ui/themes";
 import { useSignAndExecuteTransaction, useSuiClient } from "@mysten/dapp-kit";
-import { useNetworkVariable } from "./networkConfig";
 import ClipLoader from "react-spinners/ClipLoader";
+
+import * as counter from './contracts/counter/counter';
 
 export function CreateCounter({
   onCreated,
 }: {
   onCreated: (id: string) => void;
 }) {
-  const counterPackageId = useNetworkVariable("counterPackageId");
   const suiClient = useSuiClient();
   const {
     mutate: signAndExecute,
@@ -19,11 +19,7 @@ export function CreateCounter({
 
   function create() {
     const tx = new Transaction();
-
-    tx.moveCall({
-      arguments: [],
-      target: `${counterPackageId}::counter::create`,
-    });
+    tx.add(counter.create());
 
     signAndExecute(
       {
